@@ -1,0 +1,486 @@
+﻿
+D:\EMS-Frontend\election-frontend\src\components\admin\ManageConstituencies.tsx
+  20:5   error  Error: Cannot access variable before it is declared
+
+`loadConstituencies` is accessed before it is declared, which prevents the earlier access from updating when this value changes over time.
+
+D:\EMS-Frontend\election-frontend\src\components\admin\ManageConstituencies.tsx:20:5
+  18 |
+  19 |   useEffect(() => {
+> 20 |     loadConstituencies();
+     |     ^^^^^^^^^^^^^^^^^^ `loadConstituencies` accessed before it is declared
+  21 |   }, []);
+  22 |
+  23 |   const loadConstituencies = async () => {
+
+D:\EMS-Frontend\election-frontend\src\components\admin\ManageConstituencies.tsx:23:3
+  21 |   }, []);
+  22 |
+> 23 |   const loadConstituencies = async () => {
+     |   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 24 |     try {
+     | ^^^^^^^^^
+> 25 |       const data = await getAllConstituencies();
+     ÔÇª
+     | ^^^^^^^^^
+> 32 |     }
+     | ^^^^^^^^^
+> 33 |   };
+     | ^^^^^ `loadConstituencies` is declared here
+  34 |
+  35 |   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+  36 |     setFormData({ ...formData, [e.target.name]: e.target.value });  react-hooks/immutability
+  61:21  error  Unexpected any. Specify a different type                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            @typescript-eslint/no-explicit-any
+  83:23  error  Unexpected any. Specify a different type                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            @typescript-eslint/no-explicit-any
+
+D:\EMS-Frontend\election-frontend\src\components\admin\ManageElections.tsx
+  24:5   error  Error: Cannot access variable before it is declared
+
+`loadData` is accessed before it is declared, which prevents the earlier access from updating when this value changes over time.
+
+D:\EMS-Frontend\election-frontend\src\components\admin\ManageElections.tsx:24:5
+  22 |
+  23 |   useEffect(() => {
+> 24 |     loadData();
+     |     ^^^^^^^^ `loadData` accessed before it is declared
+  25 |   }, []);
+  26 |
+  27 |   const loadData = async () => {
+
+D:\EMS-Frontend\election-frontend\src\components\admin\ManageElections.tsx:27:3
+  25 |   }, []);
+  26 |
+> 27 |   const loadData = async () => {
+     |   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 28 |     try {
+     | ^^^^^^^^^
+> 29 |       const [constituenciesData, electionsData] = await Promise.all([
+     ÔÇª
+     | ^^^^^^^^^
+> 40 |     }
+     | ^^^^^^^^^
+> 41 |   };
+     | ^^^^^ `loadData` is declared here
+  42 |
+  43 |   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
+  44 |     setFormData({ ...formData, [e.target.name]: e.target.value });  react-hooks/immutability
+  62:21  error  Unexpected any. Specify a different type                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 @typescript-eslint/no-explicit-any
+  92:21  error  Unexpected any. Specify a different type                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 @typescript-eslint/no-explicit-any
+
+D:\EMS-Frontend\election-frontend\src\components\admin\ManageNominations.tsx
+   4:32  error  'Eye' is defined but never used                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           @typescript-eslint/no-unused-vars
+  17:5   error  Error: Cannot access variable before it is declared
+
+`loadElections` is accessed before it is declared, which prevents the earlier access from updating when this value changes over time.
+
+D:\EMS-Frontend\election-frontend\src\components\admin\ManageNominations.tsx:17:5
+  15 |
+  16 |   useEffect(() => {
+> 17 |     loadElections();
+     |     ^^^^^^^^^^^^^ `loadElections` accessed before it is declared
+  18 |   }, []);
+  19 |
+  20 |   const loadElections = async () => {
+
+D:\EMS-Frontend\election-frontend\src\components\admin\ManageNominations.tsx:20:3
+  18 |   }, []);
+  19 |
+> 20 |   const loadElections = async () => {
+     |   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 21 |     try {
+     | ^^^^^^^^^
+> 22 |       const data = await getAllElections();
+     | ^^^^^^^^^
+> 23 |       setElections(data);
+     | ^^^^^^^^^
+> 24 |     } catch (error) {
+     | ^^^^^^^^^
+> 25 |       console.error('Failed to load elections:', error);
+     | ^^^^^^^^^
+> 26 |       toast.error('Failed to load elections');
+     | ^^^^^^^^^
+> 27 |     }
+     | ^^^^^^^^^
+> 28 |   };
+     | ^^^^^ `loadElections` is declared here
+  29 |
+  30 |   const loadNominations = async (electionId: number) => {
+  31 |     setLoading(true);  react-hooks/immutability
+  55:21  error  Unexpected any. Specify a different type                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  @typescript-eslint/no-explicit-any
+  71:21  error  Unexpected any. Specify a different type                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  @typescript-eslint/no-explicit-any
+
+D:\EMS-Frontend\election-frontend\src\components\admin\ManageParties.tsx
+   4:23  error  'XCircle' is defined but never used                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           @typescript-eslint/no-unused-vars
+  12:5   error  Error: Cannot access variable before it is declared
+
+`loadParties` is accessed before it is declared, which prevents the earlier access from updating when this value changes over time.
+
+D:\EMS-Frontend\election-frontend\src\components\admin\ManageParties.tsx:12:5
+  10 |
+  11 |   useEffect(() => {
+> 12 |     loadParties();
+     |     ^^^^^^^^^^^ `loadParties` accessed before it is declared
+  13 |   }, []);
+  14 |
+  15 |   const loadParties = async () => {
+
+D:\EMS-Frontend\election-frontend\src\components\admin\ManageParties.tsx:15:3
+  13 |   }, []);
+  14 |
+> 15 |   const loadParties = async () => {
+     |   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 16 |     try {
+     | ^^^^^^^^^
+> 17 |       const data = await getAllParties();
+     ÔÇª
+     | ^^^^^^^^^
+> 24 |     }
+     | ^^^^^^^^^
+> 25 |   };
+     | ^^^^^ `loadParties` is declared here
+  26 |
+  27 |   const handleApprove = async (partyId: number) => {
+  28 |     try {  react-hooks/immutability
+  32:21  error  Unexpected any. Specify a different type                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      @typescript-eslint/no-explicit-any
+
+D:\EMS-Frontend\election-frontend\src\components\admin\ManageVoters.tsx
+  177:17  error  Parsing error: JSX element 'td' has no corresponding closing tag
+
+D:\EMS-Frontend\election-frontend\src\components\auth\Login.tsx
+  11:9  error  'navigate' is assigned a value but never used  @typescript-eslint/no-unused-vars
+
+D:\EMS-Frontend\election-frontend\src\components\auth\ProtectedRoute.tsx
+  9:28  error  'user' is assigned a value but never used  @typescript-eslint/no-unused-vars
+
+D:\EMS-Frontend\election-frontend\src\components\auth\Register.tsx
+   6:38  error  'MapPin' is defined but never used                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            @typescript-eslint/no-unused-vars
+  29:5   error  Error: Cannot access variable before it is declared
+
+`loadConstituencies` is accessed before it is declared, which prevents the earlier access from updating when this value changes over time.
+
+D:\EMS-Frontend\election-frontend\src\components\auth\Register.tsx:29:5
+  27 |
+  28 |   useEffect(() => {
+> 29 |     loadConstituencies();
+     |     ^^^^^^^^^^^^^^^^^^ `loadConstituencies` accessed before it is declared
+  30 |   }, []);
+  31 |
+  32 |   const loadConstituencies = async () => {
+
+D:\EMS-Frontend\election-frontend\src\components\auth\Register.tsx:32:3
+  30 |   }, []);
+  31 |
+> 32 |   const loadConstituencies = async () => {
+     |   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 33 |     try {
+     | ^^^^^^^^^
+> 34 |       const data = await getAllConstituencies();
+     | ^^^^^^^^^
+> 35 |       setConstituencies(data);
+     | ^^^^^^^^^
+> 36 |     } catch (error) {
+     | ^^^^^^^^^
+> 37 |       console.error('Failed to load constituencies:', error);
+     | ^^^^^^^^^
+> 38 |       toast.error('Failed to load constituencies');
+     | ^^^^^^^^^
+> 39 |     }
+     | ^^^^^^^^^
+> 40 |   };
+     | ^^^^^ `loadConstituencies` is declared here
+  41 |
+  42 |   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
+  43 |     setFormData({ ...formData, [e.target.name]: e.target.value });  react-hooks/immutability
+  76:21  error  Unexpected any. Specify a different type                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      @typescript-eslint/no-explicit-any
+
+D:\EMS-Frontend\election-frontend\src\components\candidate\NominationStatus.tsx
+   9:58  error  Unexpected any. Specify a different type                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 @typescript-eslint/no-explicit-any
+  14:5   error  Error: Cannot access variable before it is declared
+
+`loadData` is accessed before it is declared, which prevents the earlier access from updating when this value changes over time.
+
+D:\EMS-Frontend\election-frontend\src\components\candidate\NominationStatus.tsx:14:5
+  12 |
+  13 |   useEffect(() => {
+> 14 |     loadData();
+     |     ^^^^^^^^ `loadData` accessed before it is declared
+  15 |   }, []);
+  16 |
+  17 |   const loadData = async () => {
+
+D:\EMS-Frontend\election-frontend\src\components\candidate\NominationStatus.tsx:17:3
+  15 |   }, []);
+  16 |
+> 17 |   const loadData = async () => {
+     |   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 18 |     setLoading(true);
+     | ^^^^^^^^^^^^^^^^^^^^^
+> 19 |     try {
+     ÔÇª
+     | ^^^^^^^^^^^^^^^^^^^^^
+> 31 |     }
+     | ^^^^^^^^^^^^^^^^^^^^^
+> 32 |   };
+     | ^^^^^ `loadData` is declared here
+  33 |
+  34 |   const getStatusIcon = (status: string) => {
+  35 |     switch (status) {  react-hooks/immutability
+
+D:\EMS-Frontend\election-frontend\src\components\layout\Sidebar.tsx
+  15:3   error  'Menu' is defined but never used              @typescript-eslint/no-unused-vars
+  16:3   error  'X' is defined but never used                 @typescript-eslint/no-unused-vars
+  25:25  error  'hasRole' is assigned a value but never used  @typescript-eslint/no-unused-vars
+
+D:\EMS-Frontend\election-frontend\src\components\party\AddCandidate.tsx
+  24:5   error  Error: Cannot access variable before it is declared
+
+`loadConstituencies` is accessed before it is declared, which prevents the earlier access from updating when this value changes over time.
+
+D:\EMS-Frontend\election-frontend\src\components\party\AddCandidate.tsx:24:5
+  22 |
+  23 |   useEffect(() => {
+> 24 |     loadConstituencies();
+     |     ^^^^^^^^^^^^^^^^^^ `loadConstituencies` accessed before it is declared
+  25 |   }, []);
+  26 |
+  27 |   const loadConstituencies = async () => {
+
+D:\EMS-Frontend\election-frontend\src\components\party\AddCandidate.tsx:27:3
+  25 |   }, []);
+  26 |
+> 27 |   const loadConstituencies = async () => {
+     |   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 28 |     try {
+     | ^^^^^^^^^
+> 29 |       const data = await getAllConstituencies();
+     | ^^^^^^^^^
+> 30 |       setConstituencies(data);
+     | ^^^^^^^^^
+> 31 |     } catch (error) {
+     | ^^^^^^^^^
+> 32 |       console.error('Failed to load constituencies:', error);
+     | ^^^^^^^^^
+> 33 |     }
+     | ^^^^^^^^^
+> 34 |   };
+     | ^^^^^ `loadConstituencies` is declared here
+  35 |
+  36 |   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
+  37 |     setFormData({ ...formData, [e.target.name]: e.target.value });  react-hooks/immutability
+  75:21  error  Unexpected any. Specify a different type                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    @typescript-eslint/no-explicit-any
+
+D:\EMS-Frontend\election-frontend\src\components\party\PartyRegister.tsx
+   5:21  error  'User' is defined but never used          @typescript-eslint/no-unused-vars
+   5:27  error  'Mail' is defined but never used          @typescript-eslint/no-unused-vars
+   5:33  error  'Lock' is defined but never used          @typescript-eslint/no-unused-vars
+   5:39  error  'MapPin' is defined but never used        @typescript-eslint/no-unused-vars
+   5:47  error  'Hash' is defined but never used          @typescript-eslint/no-unused-vars
+  46:21  error  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+
+D:\EMS-Frontend\election-frontend\src\components\party\PartyResults.tsx
+  16:5   error  Error: Cannot access variable before it is declared
+
+`loadElections` is accessed before it is declared, which prevents the earlier access from updating when this value changes over time.
+
+D:\EMS-Frontend\election-frontend\src\components\party\PartyResults.tsx:16:5
+  14 |
+  15 |   useEffect(() => {
+> 16 |     loadElections();
+     |     ^^^^^^^^^^^^^ `loadElections` accessed before it is declared
+  17 |   }, []);
+  18 |
+  19 |   const loadElections = async () => {
+
+D:\EMS-Frontend\election-frontend\src\components\party\PartyResults.tsx:19:3
+  17 |   }, []);
+  18 |
+> 19 |   const loadElections = async () => {
+     |   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 20 |     try {
+     | ^^^^^^^^^
+> 21 |       const data = await getAllElections();
+     | ^^^^^^^^^
+> 22 |       setElections(data);
+     | ^^^^^^^^^
+> 23 |     } catch (error) {
+     | ^^^^^^^^^
+> 24 |       console.error('Failed to load elections:', error);
+     | ^^^^^^^^^
+> 25 |       toast.error('Failed to load elections');
+     | ^^^^^^^^^
+> 26 |     }
+     | ^^^^^^^^^
+> 27 |   };
+     | ^^^^^ `loadElections` is declared here
+  28 |
+  29 |   const loadResults = async (electionId: number) => {
+  30 |     setLoading(true);  react-hooks/immutability
+  38:21  error  Unexpected any. Specify a different type                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    @typescript-eslint/no-explicit-any
+
+D:\EMS-Frontend\election-frontend\src\components\voter\CastVote.tsx
+  18:10  error    'winner' is assigned a value but never used                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            @typescript-eslint/no-unused-vars
+  18:40  error    Unexpected any. Specify a different type                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               @typescript-eslint/no-explicit-any
+  22:7   error    Error: Cannot access variable before it is declared
+
+`loadCandidates` is accessed before it is declared, which prevents the earlier access from updating when this value changes over time.
+
+D:\EMS-Frontend\election-frontend\src\components\voter\CastVote.tsx:22:7
+  20 |   useEffect(() => {
+  21 |     if (selectedElection) {
+> 22 |       loadCandidates();
+     |       ^^^^^^^^^^^^^^ `loadCandidates` accessed before it is declared
+  23 |       loadWinner();
+  24 |     }
+  25 |   }, [selectedElection]);
+
+D:\EMS-Frontend\election-frontend\src\components\voter\CastVote.tsx:27:3
+  25 |   }, [selectedElection]);
+  26 |
+> 27 |   const loadCandidates = async () => {
+     |   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 28 |     // This would call an API to get candidates for the election
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 29 |     // For now, we'll use mock data
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 30 |     setCandidates([]);
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 31 |   };
+     | ^^^^^ `loadCandidates` is declared here
+  32 |
+  33 |   const loadWinner = async () => {
+  34 |     if (selectedElection?.status === 'COMPLETED') {                                                                                                                                                                                                                                                                                                                                                  react-hooks/immutability
+  23:7   error    Error: Cannot access variable before it is declared
+
+`loadWinner` is accessed before it is declared, which prevents the earlier access from updating when this value changes over time.
+
+D:\EMS-Frontend\election-frontend\src\components\voter\CastVote.tsx:23:7
+  21 |     if (selectedElection) {
+  22 |       loadCandidates();
+> 23 |       loadWinner();
+     |       ^^^^^^^^^^ `loadWinner` accessed before it is declared
+  24 |     }
+  25 |   }, [selectedElection]);
+  26 |
+
+D:\EMS-Frontend\election-frontend\src\components\voter\CastVote.tsx:33:3
+  31 |   };
+  32 |
+> 33 |   const loadWinner = async () => {
+     |   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 34 |     if (selectedElection?.status === 'COMPLETED') {
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 35 |       try {
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 36 |         const data = await getWinner(selectedElection.id);
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 37 |         setWinner(data);
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 38 |       } catch (error) {
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 39 |         console.error('Failed to load winner:', error);
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 40 |       }
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 41 |     }
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 42 |   };
+     | ^^^^^ `loadWinner` is declared here
+  43 |
+  44 |   const handleSubmit = async (e: React.FormEvent) => {
+  45 |     e.preventDefault();  react-hooks/immutability
+  25:6   warning  React Hook useEffect has a missing dependency: 'loadWinner'. Either include it or remove the dependency array                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          react-hooks/exhaustive-deps
+  63:21  error    Unexpected any. Specify a different type                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               @typescript-eslint/no-explicit-any
+
+D:\EMS-Frontend\election-frontend\src\components\voter\VoterDashboard.tsx
+  20:5   error  Error: Cannot access variable before it is declared
+
+`loadProfile` is accessed before it is declared, which prevents the earlier access from updating when this value changes over time.
+
+D:\EMS-Frontend\election-frontend\src\components\voter\VoterDashboard.tsx:20:5
+  18 |
+  19 |   useEffect(() => {
+> 20 |     loadProfile();
+     |     ^^^^^^^^^^^ `loadProfile` accessed before it is declared
+  21 |     loadElections();
+  22 |   }, []);
+  23 |
+
+D:\EMS-Frontend\election-frontend\src\components\voter\VoterDashboard.tsx:24:3
+  22 |   }, []);
+  23 |
+> 24 |   const loadProfile = async () => {
+     |   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 25 |     try {
+     | ^^^^^^^^^
+> 26 |       const data = await getVoterProfile();
+     | ^^^^^^^^^
+> 27 |       setProfile(data);
+     | ^^^^^^^^^
+> 28 |     } catch (error) {
+     | ^^^^^^^^^
+> 29 |       console.error('Failed to load profile:', error);
+     | ^^^^^^^^^
+> 30 |     }
+     | ^^^^^^^^^
+> 31 |   };
+     | ^^^^^ `loadProfile` is declared here
+  32 |
+  33 |   const loadElections = async () => {
+  34 |     try {  react-hooks/immutability
+  21:5   error  Error: Cannot access variable before it is declared
+
+`loadElections` is accessed before it is declared, which prevents the earlier access from updating when this value changes over time.
+
+D:\EMS-Frontend\election-frontend\src\components\voter\VoterDashboard.tsx:21:5
+  19 |   useEffect(() => {
+  20 |     loadProfile();
+> 21 |     loadElections();
+     |     ^^^^^^^^^^^^^ `loadElections` accessed before it is declared
+  22 |   }, []);
+  23 |
+  24 |   const loadProfile = async () => {
+
+D:\EMS-Frontend\election-frontend\src\components\voter\VoterDashboard.tsx:33:3
+  31 |   };
+  32 |
+> 33 |   const loadElections = async () => {
+     |   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 34 |     try {
+     | ^^^^^^^^^
+> 35 |       const data = await getActiveElections();
+     ÔÇª
+     | ^^^^^^^^^
+> 51 |     }
+     | ^^^^^^^^^
+> 52 |   };
+     | ^^^^^ `loadElections` is declared here
+  53 |
+  54 |   const loadResults = async (electionId: number) => {
+  55 |     try {                                                                                                          react-hooks/immutability
+  44:18  error  'error' is defined but never used                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         @typescript-eslint/no-unused-vars
+
+D:\EMS-Frontend\election-frontend\src\contexts\AuthContext.tsx
+  17:14  error  Fast refresh only works when a file only exports components. Use a new file to share constants or functions between components                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 react-refresh/only-export-components
+  37:7   error  Error: Calling setState synchronously within an effect can trigger cascading renders
+
+Effects are intended to synchronize state between React and external systems such as manually updating the DOM, state management libraries, or other platform APIs. In general, the body of an effect should do one or both of the following:
+* Update external systems with the latest state from React.
+* Subscribe for updates from some external system, calling setState in a callback function when external state changes.
+
+Calling setState synchronously within an effect body causes cascading renders that can hurt performance, and is not recommended. (https://react.dev/learn/you-might-not-need-an-effect).
+
+D:\EMS-Frontend\election-frontend\src\contexts\AuthContext.tsx:37:7
+  35 |     const userData = localStorage.getItem('user');
+  36 |     if (token && userData) {
+> 37 |       setUser(JSON.parse(userData));
+     |       ^^^^^^^ Avoid calling setState() directly within an effect
+  38 |     }
+  39 |   }, []);
+  40 |  react-hooks/set-state-in-effect
+  60:21  error  Unexpected any. Specify a different type                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       @typescript-eslint/no-explicit-any
+
+D:\EMS-Frontend\election-frontend\src\services\candidate.service.ts
+  24:65  error  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+
+Ô£û 47 problems (46 errors, 1 warning)
+
