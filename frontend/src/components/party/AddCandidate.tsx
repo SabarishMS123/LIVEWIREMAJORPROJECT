@@ -70,8 +70,11 @@ const AddCandidate: React.FC = () => {
   }
 };
   return (
-    <div className="bg-white rounded-xl shadow-lg p-6">
-      <h2 className="text-xl font-semibold mb-6">Add New Candidate</h2>
+    <div className="glass rounded-[2rem] p-6 md:p-8">
+      <div className="mb-6">
+        <p className="text-sm font-bold uppercase tracking-[0.25em] text-violet-600">Candidate Management</p>
+        <h2 className="section-title mt-2">Add New Candidate</h2>
+      </div>
       
       <form onSubmit={handleSubmit} className="space-y-6">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -84,7 +87,7 @@ const AddCandidate: React.FC = () => {
               name="name"
               value={formData.name}
               onChange={handleChange}
-              className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500"
+              className="soft-input"
               required
             />
           </div>
@@ -98,7 +101,7 @@ const AddCandidate: React.FC = () => {
               name="fatherName"
               value={formData.fatherName}
               onChange={handleChange}
-              className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500"
+              className="soft-input"
               required
             />
           </div>
@@ -112,7 +115,7 @@ const AddCandidate: React.FC = () => {
               name="motherName"
               value={formData.motherName}
               onChange={handleChange}
-              className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500"
+              className="soft-input"
             />
           </div>
 
@@ -125,7 +128,7 @@ const AddCandidate: React.FC = () => {
               name="dateOfBirth"
               value={formData.dateOfBirth}
               onChange={handleChange}
-              className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500"
+              className="soft-input"
               required
             />
           </div>
@@ -139,7 +142,7 @@ const AddCandidate: React.FC = () => {
               name="address"
               value={formData.address}
               onChange={handleChange}
-              className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500"
+              className="soft-input"
               required
             />
           </div>
@@ -152,7 +155,7 @@ const AddCandidate: React.FC = () => {
               name="constituencyId"
               value={formData.constituencyId}
               onChange={handleChange}
-              className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500"
+              className="soft-input"
               required
             >
               <option value="">Select Constituency</option>
@@ -171,7 +174,7 @@ const AddCandidate: React.FC = () => {
               name="username"
               value={formData.username}
               onChange={handleChange}
-              className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500"
+              className="soft-input"
               required
             />
           </div>
@@ -185,7 +188,7 @@ const AddCandidate: React.FC = () => {
               name="email"
               value={formData.email}
               onChange={handleChange}
-              className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500"
+              className="soft-input"
               required
             />
           </div>
@@ -199,7 +202,7 @@ const AddCandidate: React.FC = () => {
               name="password"
               value={formData.password}
               onChange={handleChange}
-              className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500"
+              className="soft-input"
               required
             />
           </div>
@@ -213,7 +216,7 @@ const AddCandidate: React.FC = () => {
               name="confirmPassword"
               value={formData.confirmPassword}
               onChange={handleChange}
-              className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500"
+              className="soft-input"
               required
             />
           </div>
@@ -222,7 +225,7 @@ const AddCandidate: React.FC = () => {
         <button
           type="submit"
           disabled={loading}
-          className="w-full bg-blue-600 text-white py-2 rounded-lg hover:bg-blue-700 transition disabled:opacity-50"
+          className="primary-button w-full"
         >
           {loading ? 'Adding Candidate...' : 'Add Candidate'}
         </button>

@@ -550,8 +550,8 @@ const VoterDashboard: React.FC = () => {
     );
   }
 
-  return (
-    <div className="max-w-6xl mx-auto">
+    return (
+    <div className="p-4 sm:p-6 lg:p-8">
       <div className="flex justify-between items-center mb-8">
         <h1 className="text-2xl font-bold text-gray-800">Voter Dashboard</h1>
         <button
@@ -609,13 +609,7 @@ const VoterDashboard: React.FC = () => {
         />
       )}
 
-      {activeTab === 'results' && (
-        <ResultsView
-          elections={elections}
-          results={results}
-          onSelectElection={loadResults}
-        />
-      )}
+      {activeTab === 'results' && <ResultsView />}
 
       {activeTab === 'profile' && profile && (
         <div className="bg-white rounded-xl shadow-lg overflow-hidden">

@@ -408,7 +408,7 @@ const ResultsView: React.FC = () => {
   }
 
   return (
-    <div className="space-y-6">
+    <div className="max-w-6xl mx-auto space-y-6">
       {/* Election Selector */}
       <div className="bg-white rounded-xl shadow-lg p-6">
         <h2 className="text-xl font-semibold mb-4 flex items-center">

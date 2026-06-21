@@ -12,7 +12,9 @@ import {
   BarChart3,
   UserCheck,
   LogOut,
+  X,
 } from 'lucide-react';
+import ecilogo from '../../assets/ecilogo.png';
 
 interface SidebarProps {
   isOpen: boolean;
@@ -21,10 +23,9 @@ interface SidebarProps {
 
 const Sidebar: React.FC<SidebarProps> = ({ isOpen, onClose }) => {
   const { user, logout } = useAuth();
+  const role = (user?.role || '').toUpperCase();
 
   const getMenuItems = () => {
-    const role = user?.role || '';
-    
     if (role.includes('VOTER')) {
       return [
         { path: '/voter/dashboard', label: 'Dashboard', icon: LayoutDashboard },
@@ -33,13 +34,12 @@ const Sidebar: React.FC<SidebarProps> = ({ isOpen, onClose }) => {
         { path: '/voter/profile', label: 'My Profile', icon: UserCheck },
       ];
     }
-    
+
     if (role.includes('PARTY')) {
       return [
         { path: '/party/dashboard', label: 'Dashboard', icon: LayoutDashboard },
         { path: '/party/candidates', label: 'My Candidates', icon: Users },
         { path: '/party/add-candidate', label: 'Add Candidate', icon: UserCheck },
-        { path: '/party/nominations', label: 'Nominations', icon: FileCheck },
         { path: '/party/results', label: 'Results', icon: BarChart3 },
       ];
     }
@@ -50,7 +50,7 @@ const Sidebar: React.FC<SidebarProps> = ({ isOpen, onClose }) => {
         { path: '/candidate/nominations', label: 'Nominations', icon: FileCheck },
       ];
     }
-    
+
     if (role.includes('RO_RETURNING_OFFICER')) {
       return [
         { path: '/admin/dashboard', label: 'Dashboard', icon: LayoutDashboard },
@@ -62,7 +62,7 @@ const Sidebar: React.FC<SidebarProps> = ({ isOpen, onClose }) => {
         { path: '/admin/results', label: 'Results', icon: BarChart3 },
       ];
     }
-    
+
     return [];
   };
 
@@ -70,77 +70,84 @@ const Sidebar: React.FC<SidebarProps> = ({ isOpen, onClose }) => {
 
   return (
     <>
-      {/* Mobile Overlay */}
       {isOpen && (
         <div
-          className="fixed inset-0 bg-black bg-opacity-50 z-20 lg:hidden"
+          className="fixed inset-0 z-20 bg-slate-950/50 backdrop-blur-sm lg:hidden"
           onClick={onClose}
         />
       )}
 
-      {/* Sidebar */}
       <aside
-        className={`fixed top-0 left-0 h-full bg-gradient-to-b from-gray-900 to-gray-800 text-white w-64 z-30 transform transition-transform duration-300 ease-in-out ${
-          isOpen ? 'translate-x-0' : '-translate-x-full'
-        } lg:translate-x-0`}
+        className={`fixed inset-y-0 left-0 z-30 h-screen min-h-screen w-80 transform overflow-y-auto border-r border-slate-200/10 bg-slate-950/95 shadow-2xl transition-transform duration-300 ease-in-out ${isOpen ? 'translate-x-0' : '-translate-x-full'} lg:translate-x-0`}
       >
-        {/* Logo */}
-        <div className="p-6 border-b border-gray-700">
-          <div className="flex items-center space-x-3">
-            <Vote className="w-8 h-8 text-blue-400" />
+        <div className="flex items-center justify-between gap-3 border-b border-slate-200/10 p-6 lg:px-8">
+          <div className="flex items-center gap-3">
+            <img
+              src={ecilogo}
+              alt="Election Commission logo"
+              className="h-12 w-12 rounded-2xl bg-white/90 p-2 shadow-sm"
+            />
             <div>
-              <h1 className="text-xl font-bold">Election</h1>
-              <p className="text-xs text-gray-400">Management System</p>
+              <h1 className="text-xl font-bold text-white">Election</h1>
+              <p className="text-xs uppercase tracking-[0.2em] text-slate-400">Management</p>
             </div>
           </div>
+          <button
+            onClick={onClose}
+            className="lg:hidden inline-flex h-10 w-10 items-center justify-center rounded-2xl bg-slate-900/90 text-slate-200 transition hover:bg-slate-800"
+            aria-label="Close menu"
+          >
+            <X className="w-5 h-5" />
+          </button>
         </div>
 
-        {/* User Info */}
-        <div className="p-4 border-b border-gray-700">
-          <div className="flex items-center space-x-3">
-            <div className="w-10 h-10 bg-blue-600 rounded-full flex items-center justify-center">
-              <span className="text-lg font-semibold">
-                {user?.username?.charAt(0).toUpperCase()}
-              </span>
+        <div className="mx-4 mt-4 rounded-3xl border border-white/10 bg-white/10 p-4 text-slate-100 shadow-lg backdrop-blur-xl lg:mx-6">
+          <div className="flex items-center gap-3">
+            <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-gradient-to-br from-blue-500 to-indigo-600 font-bold text-white shadow-lg">
+              {user?.username?.charAt(0).toUpperCase() || 'U'}
             </div>
-            <div>
-              <p className="font-medium text-sm">{user?.username}</p>
-              <p className="text-xs text-gray-400">
-                {user?.role?.replace('ROLE_', '').replace('_', ' ')}
+            <div className="min-w-0">
+              <p className="truncate text-sm font-semibold text-white">{user?.username || 'Guest'}</p>
+              <p className="truncate text-xs uppercase tracking-[0.18em] text-slate-400">
+                {user?.role?.replace('ROLE_', '').replace(/_/g, ' ') || 'Visitor'}
               </p>
             </div>
           </div>
         </div>
 
-        {/* Navigation */}
-        <nav className="flex-1 py-6">
-          <ul className="space-y-1">
-            {menuItems.map((item) => (
-              <li key={item.path}>
-                <NavLink
-                  to={item.path}
-                  onClick={() => onClose()}
-                  className={({ isActive }) =>
-                    `flex items-center space-x-3 px-6 py-3 transition-colors ${
-                      isActive
-                        ? 'bg-blue-600 text-white'
-                        : 'text-gray-300 hover:bg-gray-700 hover:text-white'
-                    }`
-                  }
-                >
-                  <item.icon className="w-5 h-5" />
-                  <span>{item.label}</span>
-                </NavLink>
+        <nav className="mt-6 px-3 lg:px-6">
+          <ul className="space-y-2">
+            {menuItems.length === 0 ? (
+              <li className="rounded-3xl border border-dashed border-slate-700 bg-slate-900/90 p-4 text-sm text-slate-400">
+                No menu items available for this role.
               </li>
-            ))}
+            ) : (
+              menuItems.map((item) => (
+                <li key={item.path}>
+                  <NavLink
+                    to={item.path}
+                    onClick={onClose}
+                    className={({ isActive }) =>
+                      `group flex items-center gap-3 rounded-3xl px-4 py-3 text-sm font-semibold transition duration-200 ${
+                        isActive
+                          ? 'bg-gradient-to-r from-blue-600 to-indigo-600 text-white shadow-lg'
+                          : 'text-slate-200 hover:bg-white/10 hover:text-white'
+                      }`
+                    }
+                  >
+                    <item.icon className="w-5 h-5" />
+                    <span>{item.label}</span>
+                  </NavLink>
+                </li>
+              ))
+            )}
           </ul>
         </nav>
 
-        {/* Logout Button */}
-        <div className="p-4 border-t border-gray-700">
+        <div className="mt-auto border-t border-slate-200/10 p-6 lg:px-8">
           <button
             onClick={logout}
-            className="flex items-center space-x-3 w-full px-3 py-2 text-gray-300 hover:bg-gray-700 hover:text-white rounded-lg transition-colors"
+            className="flex w-full items-center justify-center gap-2 rounded-3xl bg-white/10 px-4 py-3 text-sm font-semibold text-white transition hover:bg-white/15"
           >
             <LogOut className="w-5 h-5" />
             <span>Logout</span>

@@ -54,6 +54,7 @@ export interface Election {
   description: string;
   constituencyId: number;
   constituencyName: string;
+  constituency?: Constituency;
   nominationStartDate: string;
   nominationEndDate: string;
   electionStartDate: string;
@@ -121,7 +122,7 @@ export interface CandidateRequest {
   motherName: string;
   dateOfBirth: string;
   address: string;
-  partyId: number;
+  partyId?: number;
   constituencyId: number;
   username: string;
   password: string;
@@ -143,18 +144,6 @@ export interface ElectionRequest {
   nominationEndDate: string;
   electionStartDate: string;
   electionEndDate: string;
-}
-export interface CandidateRequest {
-  name: string;
-  fatherName: string;
-  motherName: string;
-  dateOfBirth: string;
-  address: string;
-  partyId?: number;  // ✅ Make optional
-  constituencyId: number;
-  username: string;
-  password: string;
-  email: string;
 }
 export interface ElectionResult {
   id: number;

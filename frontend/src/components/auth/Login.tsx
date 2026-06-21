@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useAuth } from '../../contexts/AuthContext';
-import { LogIn, Mail, Lock } from 'lucide-react';
+import { Mail, Lock } from 'lucide-react';
+import ecilogo from '../../assets/ecilogo.png';
 
 const Login: React.FC = () => {
   const [username, setUsername] = useState('');
@@ -22,28 +23,31 @@ const Login: React.FC = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100 flex items-center justify-center p-4">
-      <div className="bg-white rounded-2xl shadow-xl w-full max-w-md p-8">
+    <div className="app-shell relative flex min-h-screen items-center justify-center overflow-hidden p-4">
+      <div className="pointer-events-none absolute inset-0 overflow-hidden">
+        <div className="absolute -top-28 -left-24 h-80 w-80 rounded-full bg-blue-500/20 blur-3xl" />
+        <div className="absolute bottom-0 right-0 h-96 w-96 rounded-full bg-violet-500/20 blur-3xl" />
+      </div>
+
+      <div className="glass relative w-full max-w-md rounded-[2rem] p-8 shadow-2xl">
         <div className="text-center mb-8">
-          <div className="bg-blue-600 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
-            <LogIn className="w-8 h-8 text-white" />
+          <div className="mx-auto mb-5 flex h-24 w-24 items-center justify-center rounded-3xl bg-white/70 p-3 shadow-xl">
+            <img src={ecilogo} alt="Election Commission logo" className="h-full w-full object-contain" />
           </div>
-          <h1 className="text-2xl font-bold text-gray-800">Welcome Back</h1>
-          <p className="text-gray-500 mt-2">Sign in to your account</p>
+          <h1 className="text-2xl font-extrabold text-slate-900">Welcome Back</h1>
+          <p className="mt-2 text-sm text-slate-500">Sign in to continue to the election portal</p>
         </div>
 
-        <form onSubmit={handleSubmit} className="space-y-6">
+        <form onSubmit={handleSubmit} className="space-y-5">
           <div>
-            <label className="block text-sm font-medium text-gray-700 mb-2">
-              Username
-            </label>
+            <label className="mb-2 block text-sm font-semibold text-slate-700">Username</label>
             <div className="relative">
-              <Mail className="absolute left-3 top-1/2 transform -translate-y-1/2 w-5 h-5 text-gray-400" />
+              <Mail className="absolute left-4 top-1/2 h-5 w-5 -translate-y-1/2 text-slate-400" />
               <input
                 type="text"
                 value={username}
                 onChange={(e) => setUsername(e.target.value)}
-                className="w-full pl-10 pr-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                className="soft-input pl-11"
                 placeholder="Enter your username"
                 required
               />
@@ -51,36 +55,36 @@ const Login: React.FC = () => {
           </div>
 
           <div>
-            <label className="block text-sm font-medium text-gray-700 mb-2">
-              Password
-            </label>
+            <label className="mb-2 block text-sm font-semibold text-slate-700">Password</label>
             <div className="relative">
-              <Lock className="absolute left-3 top-1/2 transform -translate-y-1/2 w-5 h-5 text-gray-400" />
+              <Lock className="absolute left-4 top-1/2 h-5 w-5 -translate-y-1/2 text-slate-400" />
               <input
                 type="password"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
-                className="w-full pl-10 pr-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                className="soft-input pl-11"
                 placeholder="Enter your password"
                 required
               />
             </div>
           </div>
 
-          <button
-            type="submit"
-            disabled={loading}
-            className="w-full bg-blue-600 text-white py-2 rounded-lg hover:bg-blue-700 transition duration-200 disabled:opacity-50"
-          >
+          <button type="submit" disabled={loading} className="primary-button w-full">
             {loading ? 'Signing in...' : 'Sign In'}
           </button>
         </form>
 
-        <div className="mt-6 text-center">
-          <p className="text-gray-600">
+        <div className="mt-6 rounded-2xl bg-blue-50/70 p-4 text-center text-sm text-slate-600">
+          <p>
             Don't have an account?{' '}
-            <Link to="/register/party" className="text-blue-600 hover:underline">
+            <Link to="/register/party" className="font-bold text-blue-700 hover:text-blue-800">
               Register as Party
+            </Link>
+          </p>
+          <p className="mt-2">
+            Voter registration?{' '}
+            <Link to="/register/voter" className="font-bold text-blue-700 hover:text-blue-800">
+              Register as Voter
             </Link>
           </p>
         </div>

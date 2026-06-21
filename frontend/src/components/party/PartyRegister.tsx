@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 import toast from 'react-hot-toast';
 import { registerParty } from '../../services/party.service';
-import { Building2 } from 'lucide-react';
+import ecilogo from '../../assets/ecilogo.png';
 
 const PartyRegister: React.FC = () => {
   const navigate = useNavigate();
@@ -52,14 +52,19 @@ const PartyRegister: React.FC = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100 flex items-center justify-center p-4">
-      <div className="bg-white rounded-2xl shadow-xl w-full max-w-2xl p-8">
+    <div className="app-shell relative flex min-h-screen items-center justify-center overflow-hidden p-4">
+      <div className="pointer-events-none absolute inset-0 overflow-hidden">
+        <div className="absolute -top-28 -left-24 h-80 w-80 rounded-full bg-blue-500/20 blur-3xl" />
+        <div className="absolute bottom-0 right-0 h-96 w-96 rounded-full bg-violet-500/20 blur-3xl" />
+      </div>
+
+      <div className="glass relative w-full max-w-3xl rounded-[2rem] p-8 shadow-2xl md:p-10">
         <div className="text-center mb-8">
-          <div className="bg-blue-600 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
-            <Building2 className="w-8 h-8 text-white" />
+          <div className="mx-auto mb-5 flex h-24 w-24 items-center justify-center rounded-3xl bg-white/70 p-3 shadow-xl">
+            <img src={ecilogo} alt="Election Commission logo" className="h-full w-full object-contain" />
           </div>
-          <h1 className="text-2xl font-bold text-gray-800">Register Political Party</h1>
-          <p className="text-gray-500 mt-2">Create your party account</p>
+          <h1 className="text-2xl font-extrabold text-slate-900">Register Political Party</h1>
+          <p className="text-sm text-slate-500 mt-2">Create your party account</p>
         </div>
 
         <form onSubmit={handleSubmit} className="space-y-6">
@@ -73,7 +78,7 @@ const PartyRegister: React.FC = () => {
                 name="name"
                 value={formData.name}
                 onChange={handleChange}
-                className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500"
+                className="soft-input"
                 required
               />
             </div>
@@ -87,7 +92,7 @@ const PartyRegister: React.FC = () => {
                 name="abbreviation"
                 value={formData.abbreviation}
                 onChange={handleChange}
-                className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500"
+                className="soft-input"
                 required
               />
             </div>
@@ -101,7 +106,7 @@ const PartyRegister: React.FC = () => {
                 name="symbol"
                 value={formData.symbol}
                 onChange={handleChange}
-                className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500"
+                className="soft-input"
                 placeholder="https://drive.google.com/..."
                 required
               />
@@ -116,7 +121,7 @@ const PartyRegister: React.FC = () => {
                 name="headquarters"
                 value={formData.headquarters}
                 onChange={handleChange}
-                className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500"
+                className="soft-input"
                 required
               />
             </div>
@@ -130,7 +135,7 @@ const PartyRegister: React.FC = () => {
                 name="username"
                 value={formData.username}
                 onChange={handleChange}
-                className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500"
+                className="soft-input"
                 required
               />
             </div>
@@ -144,7 +149,7 @@ const PartyRegister: React.FC = () => {
                 name="email"
                 value={formData.email}
                 onChange={handleChange}
-                className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500"
+                className="soft-input"
                 required
               />
             </div>
@@ -158,7 +163,7 @@ const PartyRegister: React.FC = () => {
                 name="password"
                 value={formData.password}
                 onChange={handleChange}
-                className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500"
+                className="soft-input"
                 required
               />
             </div>
@@ -172,7 +177,7 @@ const PartyRegister: React.FC = () => {
                 name="confirmPassword"
                 value={formData.confirmPassword}
                 onChange={handleChange}
-                className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500"
+                className="soft-input"
                 required
               />
             </div>
@@ -181,7 +186,7 @@ const PartyRegister: React.FC = () => {
           <button
             type="submit"
             disabled={loading}
-            className="w-full bg-blue-600 text-white py-2 rounded-lg hover:bg-blue-700 transition duration-200 disabled:opacity-50"
+            className="primary-button w-full"
           >
             {loading ? 'Registering...' : 'Register Party'}
           </button>

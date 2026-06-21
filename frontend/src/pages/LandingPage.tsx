@@ -1,110 +1,170 @@
 import { Link } from 'react-router-dom';
-import { Vote, Shield, Users, BarChart3, CheckCircle, ArrowRight, UserPlus, Building2 } from 'lucide-react';
+import { Shield, Users, BarChart3, CheckCircle, ArrowRight, UserPlus, Building2 } from 'lucide-react';
+import ecilogo from '../assets/ecilogo.png';
 
 const LandingPage: React.FC = () => {
+  const featureCards = [
+    {
+      icon: CheckCircle,
+      title: 'Secure Voting',
+      description: 'Role-based access, verified voter identity, and auditable election records.',
+      color: 'from-blue-500 to-cyan-500',
+    },
+    {
+      icon: Users,
+      title: 'Voter Management',
+      description: 'Smooth voter registration, verification, and constituency-level management.',
+      color: 'from-emerald-500 to-teal-500',
+    },
+    {
+      icon: Building2,
+      title: 'Party & Candidates',
+      description: 'Manage party registration, candidate nomination, approval, and tracking.',
+      color: 'from-violet-500 to-purple-500',
+    },
+    {
+      icon: BarChart3,
+      title: 'Real-time Results',
+      description: 'Transparent result tracking with winner announcements and statistics.',
+      color: 'from-orange-500 to-rose-500',
+    },
+  ];
+
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100">
-      {/* Hero Section */}
-      <div className="container mx-auto px-4 py-16">
-        <div className="text-center">
-          <div className="flex justify-center mb-6">
-            <Vote className="w-20 h-20 text-blue-600" />
-          </div>
-          <h1 className="text-5xl font-bold text-gray-800 mb-4">
-            Election Management System
-          </h1>
-          <p className="text-xl text-gray-600 max-w-2xl mx-auto mb-8">
-            A secure, transparent, and efficient platform for managing elections,
-            voter registration, and real-time result tracking.
-          </p>
-          <div className="flex flex-wrap justify-center gap-4">
-            <Link
-              to="/login"
-              className="inline-flex items-center space-x-2 bg-blue-600 text-white px-8 py-3 rounded-lg hover:bg-blue-700 transition"
-            >
-              <ArrowRight className="w-5 h-5" />
-              <span>Login</span>
-            </Link>
-            <Link
-              to="/register/voter"
-              className="inline-flex items-center space-x-2 bg-green-600 text-white px-8 py-3 rounded-lg hover:bg-green-700 transition"
-            >
-              <UserPlus className="w-5 h-5" />
-              <span>Register as Voter</span>
-            </Link>
-            <Link
-              to="/register/party"
-              className="inline-flex items-center space-x-2 bg-purple-600 text-white px-8 py-3 rounded-lg hover:bg-purple-700 transition"
-            >
-              <Building2 className="w-5 h-5" />
-              <span>Register Party</span>
-            </Link>
-          </div>
-        </div>
+    <div className="app-shell relative overflow-hidden">
+      <div className="pointer-events-none absolute inset-0 overflow-hidden">
+        <div className="absolute -top-28 -left-24 h-80 w-80 rounded-full bg-blue-500/20 blur-3xl" />
+        <div className="absolute top-28 -right-24 h-96 w-96 rounded-full bg-violet-500/20 blur-3xl" />
+        <div className="absolute bottom-0 left-1/2 h-80 w-80 -translate-x-1/2 rounded-full bg-cyan-500/10 blur-3xl" />
+      </div>
 
-        {/* Features */}
-        <div className="mt-20">
-          <h2 className="text-3xl font-bold text-center text-gray-800 mb-12">
-            Key Features
-          </h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-            <div className="bg-white p-6 rounded-xl shadow-lg text-center hover:shadow-xl transition">
-              <div className="bg-blue-100 w-12 h-12 rounded-full flex items-center justify-center mx-auto mb-4">
-                <CheckCircle className="w-6 h-6 text-blue-600" />
+      <div className="container relative z-10 mx-auto px-4 py-12 lg:py-20">
+        <div className="glass rounded-[2rem] p-8 md:p-12">
+          <div className="grid items-center gap-10 lg:grid-cols-2">
+            <div className="text-center lg:text-left">
+              <div className="mx-auto mb-6 flex h-28 w-28 items-center justify-center rounded-3xl bg-white/70 p-3 shadow-xl lg:mx-0">
+                <img src={ecilogo} alt="Election Commission logo" className="h-full w-full object-contain" />
               </div>
-              <h3 className="text-lg font-semibold mb-2">Secure Voting</h3>
-              <p className="text-gray-500">Blockchain-based secure voting system with transaction hashing</p>
-            </div>
-            <div className="bg-white p-6 rounded-xl shadow-lg text-center hover:shadow-xl transition">
-              <div className="bg-blue-100 w-12 h-12 rounded-full flex items-center justify-center mx-auto mb-4">
-                <Users className="w-6 h-6 text-blue-600" />
-              </div>
-              <h3 className="text-lg font-semibold mb-2">Voter Management</h3>
-              <p className="text-gray-500">Easy voter registration, verification, and profile management</p>
-            </div>
-            <div className="bg-white p-6 rounded-xl shadow-lg text-center hover:shadow-xl transition">
-              <div className="bg-blue-100 w-12 h-12 rounded-full flex items-center justify-center mx-auto mb-4">
-                <Shield className="w-6 h-6 text-blue-600" />
-              </div>
-              <h3 className="text-lg font-semibold mb-2">Party & Candidates</h3>
-              <p className="text-gray-500">Manage party registration, candidate nomination and approval</p>
-            </div>
-            <div className="bg-white p-6 rounded-xl shadow-lg text-center hover:shadow-xl transition">
-              <div className="bg-blue-100 w-12 h-12 rounded-full flex items-center justify-center mx-auto mb-4">
-                <BarChart3 className="w-6 h-6 text-blue-600" />
-              </div>
-              <h3 className="text-lg font-semibold mb-2">Real-time Results</h3>
-              <p className="text-gray-500">Live election result tracking with detailed statistics</p>
-            </div>
-          </div>
-        </div>
+              <p className="mb-3 inline-flex rounded-full bg-blue-600/10 px-4 py-2 text-sm font-bold text-blue-700 ring-1 ring-blue-600/15">
+                Official Election Management Portal
+              </p>
+              <h1 className="section-title mb-5">
+                Transparent elections with a beautiful digital experience.
+              </h1>
+              <p className="mx-auto mb-8 max-w-2xl text-lg leading-8 text-slate-600 lg:mx-0">
+                A secure, modern platform for voter registration, party management,
+                candidate nomination, casting votes, and real-time result tracking.
+              </p>
 
-        {/* How It Works */}
-        <div className="mt-20 bg-white rounded-2xl shadow-xl p-8">
-          <h2 className="text-3xl font-bold text-center text-gray-800 mb-12">
-            How It Works
-          </h2>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <div className="text-center">
-              <div className="bg-blue-600 text-white w-12 h-12 rounded-full flex items-center justify-center mx-auto mb-4 text-xl font-bold">1</div>
-              <h3 className="text-lg font-semibold mb-2">Register</h3>
-              <p className="text-gray-500">Register as a voter or political party with your details</p>
+              <div className="flex flex-col justify-center gap-4 sm:flex-row lg:justify-start">
+                <Link to="/login" className="primary-button">
+                  <ArrowRight className="mr-2 h-5 w-5" />
+                  Login
+                </Link>
+                <Link to="/register/voter" className="secondary-button">
+                  <UserPlus className="mr-2 h-5 w-5" />
+                  Register as Voter
+                </Link>
+                <Link to="/register/party" className="secondary-button">
+                  <Building2 className="mr-2 h-5 w-5" />
+                  Register Party
+                </Link>
+              </div>
             </div>
-            <div className="text-center">
-              <div className="bg-blue-600 text-white w-12 h-12 rounded-full flex items-center justify-center mx-auto mb-4 text-xl font-bold">2</div>
-              <h3 className="text-lg font-semibold mb-2">Verify</h3>
-              <p className="text-gray-500">Get verified by email and RO approval for participation</p>
-            </div>
-            <div className="text-center">
-              <div className="bg-blue-600 text-white w-12 h-12 rounded-full flex items-center justify-center mx-auto mb-4 text-xl font-bold">3</div>
-              <h3 className="text-lg font-semibold mb-2">Vote & Win</h3>
-              <p className="text-gray-500">Cast your vote securely and track results in real-time</p>
+
+            <div className="relative">
+              <div className="absolute -inset-4 rounded-[2rem] bg-gradient-to-r from-blue-500/20 via-violet-500/20 to-cyan-500/20 blur-2xl" />
+              <div className="glass-card relative rounded-[2rem] p-6">
+                <div className="rounded-3xl bg-gradient-to-br from-blue-600 via-indigo-600 to-violet-600 p-6 text-white shadow-2xl">
+                  <div className="mb-6 flex items-center justify-between">
+                    <div>
+                      <p className="text-sm text-blue-100">Live Election Control</p>
+                      <h2 className="text-2xl font-extrabold">EMS Dashboard</h2>
+                    </div>
+                    <Shield className="h-12 w-12 text-blue-100/80" />
+                  </div>
+                  <div className="grid grid-cols-2 gap-4">
+                    <div className="rounded-2xl bg-white/15 p-4">
+                      <p className="text-xs text-blue-100">Voters</p>
+                      <p className="text-2xl font-extrabold">Verified</p>
+                    </div>
+                    <div className="rounded-2xl bg-white/15 p-4">
+                      <p className="text-xs text-blue-100">Candidates</p>
+                      <p className="text-2xl font-extrabold">Managed</p>
+                    </div>
+                    <div className="rounded-2xl bg-white/15 p-4">
+                      <p className="text-xs text-blue-100">Results</p>
+                      <p className="text-2xl font-extrabold">Live</p>
+                    </div>
+                    <div className="rounded-2xl bg-white/15 p-4">
+                      <p className="text-xs text-blue-100">Security</p>
+                      <p className="text-2xl font-extrabold">Role-based</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </div>
 
-        {/* Footer */}
-        <footer className="mt-20 text-center text-gray-500 text-sm">
+        <section className="mt-20">
+          <div className="mb-10 text-center">
+            <p className="mb-2 text-sm font-bold uppercase tracking-[0.3em] text-blue-600">Key Features</p>
+            <h2 className="section-title">Built for a reliable election workflow</h2>
+          </div>
+
+          <div className="grid grid-cols-1 gap-6 md:grid-cols-2 xl:grid-cols-4">
+            {featureCards.map((feature) => (
+              <div
+                key={feature.title}
+                className="glass-card group rounded-3xl p-6 text-center transition duration-300 hover:-translate-y-1 hover:shadow-2xl"
+              >
+                <div className={`mx-auto mb-5 flex h-14 w-14 items-center justify-center rounded-2xl bg-gradient-to-br ${feature.color} text-white shadow-lg transition duration-300 group-hover:scale-110`}>
+                  <feature.icon className="h-7 w-7" />
+                </div>
+                <h3 className="mb-3 text-lg font-extrabold text-slate-900">{feature.title}</h3>
+                <p className="text-sm leading-6 text-slate-600">{feature.description}</p>
+              </div>
+            ))}
+          </div>
+        </section>
+
+        <section className="mt-20 glass-card rounded-[2rem] p-8 md:p-10">
+          <div className="mb-10 text-center">
+            <p className="mb-2 text-sm font-bold uppercase tracking-[0.3em] text-violet-600">How It Works</p>
+            <h2 className="section-title">From registration to results in three steps</h2>
+          </div>
+
+          <div className="grid grid-cols-1 gap-6 md:grid-cols-3">
+            {[
+              {
+                step: '01',
+                title: 'Register',
+                description: 'Register as a voter or political party with verified details.',
+              },
+              {
+                step: '02',
+                title: 'Verify',
+                description: 'Complete email verification and RO approval for participation.',
+              },
+              {
+                step: '03',
+                title: 'Vote & Track',
+                description: 'Cast votes securely and track transparent results in real time.',
+              },
+            ].map((item) => (
+              <div key={item.step} className="rounded-3xl bg-white/60 p-6 text-center ring-1 ring-white/70">
+                <div className="mx-auto mb-5 flex h-14 w-14 items-center justify-center rounded-2xl bg-gradient-to-br from-blue-600 to-indigo-600 text-lg font-extrabold text-white shadow-lg">
+                  {item.step}
+                </div>
+                <h3 className="mb-3 text-lg font-extrabold text-slate-900">{item.title}</h3>
+                <p className="text-sm leading-6 text-slate-600">{item.description}</p>
+              </div>
+            ))}
+          </div>
+        </section>
+
+        <footer className="mt-20 text-center text-sm font-medium text-slate-500">
           <p>&copy; 2024 Election Management System. All rights reserved.</p>
         </footer>
       </div>

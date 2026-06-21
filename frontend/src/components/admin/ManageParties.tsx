@@ -57,7 +57,7 @@ const ManageParties: React.FC = () => {
           </h3>
           <div className="space-y-4">
             {pendingParties.map(party => (
-              <div key={party.id} className="border rounded-lg p-4 flex justify-between items-center">
+              <div key={party.id} className="border border-slate-300 bg-white/85 shadow-sm rounded-lg p-4 flex justify-between items-center">
                 <div>
                   <div className="flex items-center space-x-3">
                     <Building2 className="w-6 h-6 text-gray-400" />
@@ -95,7 +95,7 @@ const ManageParties: React.FC = () => {
         ) : (
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             {approvedParties.map(party => (
-              <div key={party.id} className="border rounded-lg p-4">
+              <div key={party.id} className="border border-slate-300 bg-white/85 shadow-sm rounded-lg p-4">
                 <div className="flex items-center space-x-3">
                   <div className="w-10 h-10 bg-blue-100 rounded-full flex items-center justify-center">
                     <Building2 className="w-5 h-5 text-blue-600" />

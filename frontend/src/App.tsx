@@ -120,7 +120,7 @@ function App() {
             <Route element={<Layout />}>
               <Route path="/voter/dashboard" element={<VoterDashboard />} />
               <Route path="/voter/cast-vote" element={<CastVote elections={[]} hasVotedStatus={{}} onVoteCast={() => {}} />} />
-              <Route path="/voter/results" element={<ResultsView elections={[]} results={[]} onSelectElection={() => {}} />} />
+              <Route path="/voter/results" element={<ResultsView />} />
               <Route path="/voter/profile" element={<VoterDashboard />} />
             </Route>
           </Route>

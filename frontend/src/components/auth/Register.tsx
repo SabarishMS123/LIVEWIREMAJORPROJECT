@@ -3,7 +3,8 @@ import { useNavigate, Link } from 'react-router-dom';
 import { registerVoter } from '../../services/voter.service';
 import { getAllConstituencies } from '../../services/admin.service';
 import { Constituency } from '../../types';
-import { UserPlus, User, Mail, Calendar, Home, CreditCard, Building2, Lock } from 'lucide-react';
+import { User, Mail, Calendar, Home, CreditCard, Building2, Lock } from 'lucide-react';
+import ecilogo from '../../assets/ecilogo.png';
 import toast from 'react-hot-toast';
 
 const Register: React.FC = () => {
@@ -84,14 +85,19 @@ const Register: React.FC = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100 py-8 px-4">
-      <div className="bg-white rounded-2xl shadow-xl w-full max-w-4xl mx-auto p-8">
+    <div className="app-shell relative flex min-h-screen items-center justify-center overflow-hidden p-4">
+      <div className="pointer-events-none absolute inset-0 overflow-hidden">
+        <div className="absolute -top-28 -left-24 h-80 w-80 rounded-full bg-blue-500/20 blur-3xl" />
+        <div className="absolute bottom-0 right-0 h-96 w-96 rounded-full bg-violet-500/20 blur-3xl" />
+      </div>
+
+      <div className="glass relative w-full max-w-5xl rounded-[2rem] p-8 shadow-2xl md:p-10">
         <div className="text-center mb-8">
-          <div className="bg-blue-600 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
-            <UserPlus className="w-8 h-8 text-white" />
+          <div className="mx-auto mb-5 flex h-24 w-24 items-center justify-center rounded-3xl bg-white/70 p-3 shadow-xl">
+            <img src={ecilogo} alt="Election Commission logo" className="h-full w-full object-contain" />
           </div>
-          <h1 className="text-2xl font-bold text-gray-800">Voter Registration</h1>
-          <p className="text-gray-500 mt-2">Create your voter account</p>
+          <h1 className="text-2xl font-extrabold text-slate-900">Voter Registration</h1>
+          <p className="text-sm text-slate-500 mt-2">Create your voter account</p>
         </div>
 
         <form onSubmit={handleSubmit} className="space-y-6">
@@ -108,7 +114,7 @@ const Register: React.FC = () => {
                   name="voterId"
                   value={formData.voterId}
                   onChange={handleChange}
-                  className="w-full pl-10 pr-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500"
+                  className="soft-select pl-10"
                   placeholder="Enter your Voter ID"
                   required
                 />
@@ -127,7 +133,7 @@ const Register: React.FC = () => {
                   name="name"
                   value={formData.name}
                   onChange={handleChange}
-                  className="w-full pl-10 pr-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500"
+                  className="soft-select pl-10"
                   placeholder="Enter your full name"
                   required
                 />
@@ -144,7 +150,7 @@ const Register: React.FC = () => {
                 name="fatherName"
                 value={formData.fatherName}
                 onChange={handleChange}
-                className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500"
+                className="soft-input pl-10"
                 placeholder="Enter father's name"
                 required
               />
@@ -162,7 +168,7 @@ const Register: React.FC = () => {
                   name="dateOfBirth"
                   value={formData.dateOfBirth}
                   onChange={handleChange}
-                  className="w-full pl-10 pr-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500"
+                  className="soft-select pl-10"
                   required
                 />
               </div>
@@ -180,7 +186,7 @@ const Register: React.FC = () => {
                   name="address"
                   value={formData.address}
                   onChange={handleChange}
-                  className="w-full pl-10 pr-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500"
+                  className="soft-select pl-10"
                   placeholder="Enter your address"
                   required
                 />
@@ -197,7 +203,7 @@ const Register: React.FC = () => {
                 name="city"
                 value={formData.city}
                 onChange={handleChange}
-                className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500"
+                className="soft-input pl-10"
                 placeholder="Enter city"
                 required
               />
@@ -213,7 +219,7 @@ const Register: React.FC = () => {
                 name="pincode"
                 value={formData.pincode}
                 onChange={handleChange}
-                className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500"
+                className="soft-input pl-10"
                 placeholder="Enter pincode"
                 required
               />
@@ -231,7 +237,7 @@ const Register: React.FC = () => {
                   name="email"
                   value={formData.email}
                   onChange={handleChange}
-                  className="w-full pl-10 pr-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500"
+                  className="soft-select pl-10"
                   placeholder="Enter email"
                   required
                 />
@@ -249,7 +255,7 @@ const Register: React.FC = () => {
                   name="constituencyId"
                   value={formData.constituencyId}
                   onChange={handleChange}
-                  className="w-full pl-10 pr-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500"
+                  className="soft-select pl-10"
                   required
                 >
                   <option value="">Select Constituency</option>
@@ -274,7 +280,7 @@ const Register: React.FC = () => {
                   name="username"
                   value={formData.username}
                   onChange={handleChange}
-                  className="w-full pl-10 pr-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500"
+                  className="soft-select pl-10"
                   placeholder="Choose a username"
                   required
                 />
@@ -293,7 +299,7 @@ const Register: React.FC = () => {
                   name="password"
                   value={formData.password}
                   onChange={handleChange}
-                  className="w-full pl-10 pr-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500"
+                  className="soft-select pl-10"
                   placeholder="Create a password (min 6 characters)"
                   required
                 />
@@ -312,7 +318,7 @@ const Register: React.FC = () => {
                   name="confirmPassword"
                   value={formData.confirmPassword}
                   onChange={handleChange}
-                  className="w-full pl-10 pr-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500"
+                  className="soft-select pl-10"
                   placeholder="Confirm your password"
                   required
                 />
@@ -323,7 +329,7 @@ const Register: React.FC = () => {
           <button
             type="submit"
             disabled={loading}
-            className="w-full bg-blue-600 text-white py-2 rounded-lg hover:bg-blue-700 transition duration-200 disabled:opacity-50"
+            className="primary-button w-full"
           >
             {loading ? 'Registering...' : 'Register as Voter'}
           </button>
@@ -344,8 +350,8 @@ const Register: React.FC = () => {
         </div>
 
         {/* Information Box */}
-        <div className="mt-6 p-4 bg-blue-50 rounded-lg">
-          <p className="text-sm text-blue-800">
+        <div className="mt-6 glass-card rounded-2xl p-4 text-center">
+          <p className="text-sm leading-6 text-slate-600">
             <strong>Note:</strong> After registration, you will receive a verification email. 
             Please verify your email address before logging in.
           </p>

@@ -279,7 +279,7 @@ const CastVote: React.FC<CastVoteProps> = ({ elections, hasVotedStatus, onVoteCa
   const completedElections = elections.filter(e => e.status === 'COMPLETED');
 
   return (
-    <div className="space-y-6">
+    <div className="max-w-5xl mx-auto space-y-6">
       {/* Active Elections List */}
       <div className="bg-white rounded-xl shadow-lg p-6">
         <h2 className="text-xl font-semibold mb-4">Active Elections</h2>
